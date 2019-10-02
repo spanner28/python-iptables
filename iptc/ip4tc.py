@@ -7,7 +7,7 @@ import sys
 import ctypes as ct
 import socket
 import struct
-import weakref
+#import weakref
 
 from .util import find_library, load_kernel
 from .xtables import (XT_INV_PROTO, NFPROTO_IPV4, XTablesError, xtables,
@@ -878,7 +878,8 @@ class Policy(object):
     RETURN = "RETURN"
     """Return to calling chain."""
 
-    _cache = weakref.WeakValueDictionary()
+    #_cache = weakref.WeakValueDictionary()
+    _cache = {}
 
     def __new__(cls, name):
         obj = Policy._cache.get(name, None)
@@ -1396,7 +1397,8 @@ class Chain(object):
     additional chains.  Rule targets can specify to jump into another chain
     and continue processing its rules, or return to the caller chain.
     """
-    _cache = weakref.WeakValueDictionary()
+    #_cache = weakref.WeakValueDictionary()
+    _cache = {}
 
     def __new__(cls, table, name):
         table_name = type(table).__name__ + "." + table.name

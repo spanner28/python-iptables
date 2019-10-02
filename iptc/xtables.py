@@ -3,7 +3,7 @@
 import ctypes as ct
 import os
 import sys
-import weakref
+#import weakref
 
 from . import version
 from .util import find_library
@@ -923,7 +923,8 @@ class xtables(object):
         'NOTRACK': 'CT'
     }
 
-    _cache = weakref.WeakValueDictionary()
+    #_cache = weakref.WeakValueDictionary()
+    _cache = {}
 
     def __new__(cls, proto):
         obj = xtables._cache.get(proto, None)
